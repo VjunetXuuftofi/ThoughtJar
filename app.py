@@ -26,31 +26,31 @@ def get(name):
         return jsonify({"thought": value.decode("utf-8")})
 
 
-@app.route('/add_Sonya', methods=["POST"])
-def add_Sonya():
-    return add("Sonya")
+@app.route('/add_sonya', methods=["POST"])
+def add_sonya():
+    return add("sonya")
 
 
-@app.route('/get_Sonya')
-def get_Sonya():
-    return get("Thomas")
+@app.route('/get_sonya')
+def get_sonya():
+    return get("thomas")
 
-@app.route('/add_Thomas', methods=["POST"])
-def add_Thomas():
-    return add("Thomas")
+@app.route('/add_thomas', methods=["POST"])
+def add_thomas():
+    return add("thomas")
 
-@app.route('/get_Thomas')
-def get_Thomas():
-    return get("Sonya")
+@app.route('/get_thomas')
+def get_thomas():
+    return get("sonya")
 
 
-@app.route('/get_count_Sonya')
-def get_count_Sonya():
-    return jsonify({"count": r.scard("Thomas")})
+@app.route('/get_count_sonya')
+def get_count_sonya():
+    return jsonify({"count": r.scard("thomas")})
 
-@app.route('/get_count_Thomas')
-def get_count_Thomas():
-    return jsonify({"count": r.scard("Sonya")})
+@app.route('/get_count_thomas')
+def get_count_thomas():
+    return jsonify({"count": r.scard("sonya")})
 
 
 if __name__ == '__main__':

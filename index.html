@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Соня-Thomas Thought Jar</title>
+    <title>Соня-thomas Thought Jar</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.33.1/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <style>
@@ -19,20 +19,20 @@
 </head>
 <body>
 <div id="buttons">
-    <button id="add-Sonya">
+    <button id="add-sonya">
         <span class="large">Add a thought for Соня</span>
         <br>
     </button>
-    <button id="add-Thomas"><span class="large">Add a thought for Thomas</span></button>
-    <button id="get-Sonya">
+    <button id="add-thomas"><span class="large">Add a thought for Thomas</span></button>
+    <button id="get-sonya">
         <span class="large">Get a thought from Соня</span>
         <br>
-        <span id="Sonya-thought-count">3</span> thoughts
+        <span id="sonya-thought-count">3</span> thoughts
     </button>
-    <button id="get-Thomas">
+    <button id="get-thomas">
         <span class="large">Get a thought from Thomas</span>
         <br>
-        <span id="Thomas-thought-count">3</span> thoughts
+        <span id="thomas-thought-count">3</span> thoughts
     </button>
 </div>
 </body>
@@ -45,8 +45,8 @@
             }
         });
     };
-    get_count("Sonya");
-    get_count("Thomas");
+    get_count("sonya");
+    get_count("thomas");
 
     add_thought = function(person) {
         Swal({
@@ -103,17 +103,17 @@
         });
     };
 
-    $("#add-Sonya").click(function() {
-        add_thought("Sonya");
+    $("#add-sonya").click(function() {
+        add_thought("sonya");
     });
-    $("#add-Thomas").click(function() {
-        add_thought("Thomas");
+    $("#add-thomas").click(function() {
+        add_thought("thomas");
     });
-    $("#get-Sonya").click(function() {
-        get_thought("Sonya");
+    $("#get-sonya").click(function() {
+        get_thought("sonya");
     });
-    $("#get-Thomas").click(function() {
-        get_thought("Thomas");
+    $("#get-thomas").click(function() {
+        get_thought("thomas");
     });
 
 </script>
