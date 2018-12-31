@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Соня-Thomas Thought Jar</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.33.1/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <style>
+
+        #buttons button {
+            width: 48vw;
+            height: 48vh;
+            display: inline-block;
+        }
+        span.large {
+            font-size: 7vw;
+        }
+    </style>
+</head>
+<body>
+<div id="buttons">
+    <button id="add-Соня">
+        <span class="large">Add a thought for Соня</span>
+        <br>
+    </button>
+    <button id="add-Thomas"><span class="large">Add a thought for Thomas</span></button>
+    <button id="get-Соня">
+        <span class="large">Get a thought from Соня</span>
+        <br>
+        <span id="Соня-thought-count">3</span> thoughts
+    </button>
+    <button id="get-Thomas">
+        <span class="large">Get a thought from Thomas</span>
+        <br>
+        <span id="Thomas-thought-count">3</span> thoughts
+    </button>
+</div>
+</body>
+<script>
+    get_count = function(name) {
+        $.get({
+            url: "http://localhost:5000/get_count_" + name,
+            success: function(data) {
+                $("#" + name + "-thought-count").text(data["count"]);
+            }
+        });
+    };
+    get_count("Соня");
+    get_count("Thomas");
+
+    add_thought = function(person) {
+        Swal({
+            input: 'textarea',
+            inputPlaceholder: 'Type your message for ' + person + ' here...',
+            showCancelButton: true,
+        }).then(
+            function(data) {
+                if (data.value) {
+                    $.ajax({
+                   url: "http://localhost:5000/add_" + person,
+                   contentType: 'application/json; charset=utf-8',
+                   data: JSON.stringify({
+                       thought: data.value
+                   }),
+                   type: "POST",
+                   success: function() {
+                       swal({
+                           title: "Successfully added thought!",
+                           type: "success",
+                           timer: 2000
+                       });
+                   },
+                   error:  function (data) {
+                       swal({
+                           title: data["error"],
+                           type: "error",
+                           timer: 2000
+                       })
+                   }
+                });
+                }
+            }
+        );
+    };
+
+    get_thought = function(person) {
+        $.ajax({
+               url: "http://localhost:5000/get_" + person,
+               type: "GET",
+               success: function(data) {
+                   swal({
+                       title: "A thought:",
+                       text: data["thought"],
+                   });
+               },
+               error:  function (data) {
+                   swal({
+                       title: data.responseJSON["error"],
+                       type: "error",
+                       timer: 2000
+                   })
+               }
+        });
+    };
+
+    $("#add-Соня").click(function() {
+        add_thought("Соня");
+    });
+    $("#add-Thomas").click(function() {
+        add_thought("Thomas");
+    });
+    $("#get-Соня").click(function() {
+        get_thought("Соня");
+    });
+    $("#get-Thomas").click(function() {
+        get_thought("Thomas");
+    });
+
+</script>
+</html>
