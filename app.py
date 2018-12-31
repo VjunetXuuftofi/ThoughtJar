@@ -26,13 +26,13 @@ def get(name):
         return jsonify({"thought": value.decode("utf-8")})
 
 
-@app.route('/add_Соня', methods=["POST"])
-def add_Соня():
-    return add("Соня")
+@app.route('/add_Sonya', methods=["POST"])
+def add_Sonya():
+    return add("Sonya")
 
 
-@app.route('/get_Соня')
-def get_Соня():
+@app.route('/get_Sonya')
+def get_Sonya():
     return get("Thomas")
 
 @app.route('/add_Thomas', methods=["POST"])
@@ -41,16 +41,16 @@ def add_Thomas():
 
 @app.route('/get_Thomas')
 def get_Thomas():
-    return get("Соня")
+    return get("Sonya")
 
 
-@app.route('/get_count_Соня')
-def get_count_Соня():
+@app.route('/get_count_Sonya')
+def get_count_Sonya():
     return jsonify({"count": r.scard("Thomas")})
 
 @app.route('/get_count_Thomas')
 def get_count_Thomas():
-    return jsonify({"count": r.scard("Соня")})
+    return jsonify({"count": r.scard("Sonya")})
 
 
 if __name__ == '__main__':

@@ -19,15 +19,15 @@
 </head>
 <body>
 <div id="buttons">
-    <button id="add-Соня">
+    <button id="add-Sonya">
         <span class="large">Add a thought for Соня</span>
         <br>
     </button>
     <button id="add-Thomas"><span class="large">Add a thought for Thomas</span></button>
-    <button id="get-Соня">
+    <button id="get-Sonya">
         <span class="large">Get a thought from Соня</span>
         <br>
-        <span id="Соня-thought-count">3</span> thoughts
+        <span id="Sonya-thought-count">3</span> thoughts
     </button>
     <button id="get-Thomas">
         <span class="large">Get a thought from Thomas</span>
@@ -39,13 +39,13 @@
 <script>
     get_count = function(name) {
         $.get({
-            url: "http://localhost:5000/get_count_" + name,
+            url: "https://mysterious-ridge-42069.herokuapp.com/get_count_" + name,
             success: function(data) {
                 $("#" + name + "-thought-count").text(data["count"]);
             }
         });
     };
-    get_count("Соня");
+    get_count("Sonya");
     get_count("Thomas");
 
     add_thought = function(person) {
@@ -57,7 +57,7 @@
             function(data) {
                 if (data.value) {
                     $.ajax({
-                   url: "http://localhost:5000/add_" + person,
+                   url: "https://mysterious-ridge-42069.herokuapp.com/add_" + person,
                    contentType: 'application/json; charset=utf-8',
                    data: JSON.stringify({
                        thought: data.value
@@ -85,7 +85,7 @@
 
     get_thought = function(person) {
         $.ajax({
-               url: "http://localhost:5000/get_" + person,
+               url: "https://mysterious-ridge-42069.herokuapp.com/get_" + person,
                type: "GET",
                success: function(data) {
                    swal({
@@ -103,14 +103,14 @@
         });
     };
 
-    $("#add-Соня").click(function() {
-        add_thought("Соня");
+    $("#add-Sonya").click(function() {
+        add_thought("Sonya");
     });
     $("#add-Thomas").click(function() {
         add_thought("Thomas");
     });
-    $("#get-Соня").click(function() {
-        get_thought("Соня");
+    $("#get-Sonya").click(function() {
+        get_thought("Sonya");
     });
     $("#get-Thomas").click(function() {
         get_thought("Thomas");
